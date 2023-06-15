@@ -47,4 +47,4 @@ def ModelSetup():
 
 
 root.__dict__.update(ModelSetup())
-load_model(root, load_on_run_all=True, check_sha256=True, map_location=root.map_location)
+load_model(root, load_on_run_all=False, check_sha256=True, map_location=root.map_location)

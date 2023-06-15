@@ -4,7 +4,7 @@ from types import SimpleNamespace
 from helpers.model_load import load_model, get_model_output_paths
 
 
-sys.path.insert(0, "src")
+sys.path.insert(0, "deforum_src")
 
 
 def PathSetup():

@@ -28,9 +28,9 @@ WORKDIR /deforum-stable-diffusion
 ADD src .
 
 # Cache Models
-COPY builder/cache_models.py /cache_models.py
-RUN python /cache_models.py
-RUN rm /cache_models.py
+COPY builder/cache_models.py cache_models.py
+RUN python cache_models.py
+RUN rm cache_models.py
 
 # Cleanup section (Worker Template)
 RUN apt-get autoremove -y && \

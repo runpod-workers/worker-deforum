@@ -10,7 +10,7 @@ WORKDIR /
 # Update and upgrade the system packages (Worker Template)
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install ffmpeg libgl1-mesa-glx libglib2.0-0 &&\
+    apt-get install ffmpeg libgl1-mesa-glx libglib2.0-0 -y &&\
     apt-get autoremove -y && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*

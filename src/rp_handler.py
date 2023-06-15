@@ -4,10 +4,14 @@ from runpod.serverless.utils import upload_file_to_bucket
 import uuid
 from predict import Predictor
 
+from runpod.serverless.utils.rp_validator import validate
+from rp_schema import INPUT_SCHEMA
 
 generate_video = Predictor()
 generate_video.setup()
 
+
+# TODO: Missing download for path inputs (video_init_path, video_mask_path)
 
 def handler(event):
 
@@ -15,6 +19,9 @@ def handler(event):
         return {
             "error": "INPUT_NOT_PROVIDED",
         }
+
+    if (validated_input := validate(_input, INPUT_SCHEMA)).get("errors") is not None:
+        return validated_input['errors']
 
     if (s3_config := event.get("s3Config")) is None:
         return {
@@ -36,7 +43,7 @@ def handler(event):
         s3_endpoint_url if s3_endpoint_url else "https://s3.amazonaws.com/"
     )
 
-    generated_video_local_path = generate_video.predict(**_input)
+    generated_video_local_path = generate_video.predict(**validated_input['validated_input'])
 
     file_url = upload_file_to_bucket(
         file_name=f"{uuid.uuid4()}.mp4",

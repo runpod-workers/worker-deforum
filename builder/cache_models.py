@@ -3,6 +3,8 @@ import sys
 from types import SimpleNamespace
 from helpers.model_load import load_model, get_model_output_paths
 
+from transformers import T5Tokenizer, T5EncoderModel, CLIPTokenizer, CLIPTextModel
+
 sys.path.insert(0, "src")
 
 
@@ -44,3 +46,11 @@ try:
     load_model(root, load_on_run_all=True, check_sha256=True, map_location=root.map_location)
 except Exception as err:
     print(err)
+
+
+CLIPTokenizer.from_pretrained("openai/clip-vit-large-patch14")
+CLIPTextModel.from_pretrained("openai/clip-vit-large-patch14")
+
+
+T5Tokenizer.from_pretrained("google/t5-v1_1-xl")
+T5EncoderModel.from_pretrained("google/t5-v1_1-xl")

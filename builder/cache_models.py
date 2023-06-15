@@ -20,13 +20,6 @@ def PathSetup():
 root = SimpleNamespace(**PathSetup())
 root.models_path, root.output_path = get_model_output_paths(root)
 
-# %%
-# !! {"metadata":{
-# !!   "cellView": "form",
-# !!   "id": "232_xKcCfIj9"
-# !! }}
-# @markdown **Model Setup**
-
 
 def ModelSetup():
     # @param ["cpu", "cuda"]
@@ -47,4 +40,8 @@ def ModelSetup():
 
 
 root.__dict__.update(ModelSetup())
-load_model(root, load_on_run_all=False, check_sha256=True, map_location=root.map_location)
+
+try:
+    load_model(root, load_on_run_all=True, check_sha256=True, map_location=root.map_location)
+except Exception as err:
+    print(err)

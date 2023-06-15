@@ -23,8 +23,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     rm /requirements.txt
 
 # Add src files (Worker Template)
-RUN git clone https://github.com/deforum-art/deforum-stable-diffusion.git && \
-    cd deforum-stable-diffusion
+RUN git clone https://github.com/deforum-art/deforum-stable-diffusion.git
 WORKDIR /deforum-stable-diffusion
 ADD src .
 

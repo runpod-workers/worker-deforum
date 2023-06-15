@@ -10,7 +10,7 @@ WORKDIR /
 # Update and upgrade the system packages (Worker Template)
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install ffmpeg libgl1-mesa-glx libglib2.0-0 -y &&\
+    apt-get install git ffmpeg libgl1-mesa-glx libglib2.0-0 -y &&\
     apt-get autoremove -y && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
@@ -23,6 +23,9 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     rm /requirements.txt
 
 # Add src files (Worker Template)
+RUN git clone https://github.com/deforum-art/deforum-stable-diffusion.git && \
+    cd deforum-stable-diffusion
+WORKDIR /deforum-stable-diffusion
 ADD src .
 
 # Cache Models

@@ -22,9 +22,14 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --upgrade -r /requirements.txt --no-cache-dir && \
     rm /requirements.txt
 
-# Add src files (Worker Template)
-RUN git clone https://github.com/deforum-art/deforum-stable-diffusion.git
+# Install deforum-stable-diffusion
+RUN git clone https://github.com/deforum-art/deforum-stable-diffusion.git && \
+    cd deforum-stable-diffusion && \
+    git reset --hard b6da245689f304bcf1079665c00946e8d5cf2175
+
 WORKDIR /deforum-stable-diffusion
+
+# Add src files (Worker Template)
 ADD src .
 
 # Cache Models

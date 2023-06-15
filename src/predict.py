@@ -24,7 +24,7 @@ from types import SimpleNamespace
 from cog import BasePredictor, Input, Path
 from omegaconf import OmegaConf
 
-sys.path.insert(0, "deforum_src")
+sys.path.insert(0, "src")
 
 
 MODEL_CACHE = "diffusion_models_cache"

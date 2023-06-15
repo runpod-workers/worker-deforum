@@ -2,10 +2,11 @@ import runpod
 import os
 from runpod.serverless.utils import upload_file_to_bucket
 import uuid
-from predict import predict as generate_video
+from predict import Predictor
 
 
-print("run handler")
+generate_video = Predictor()
+generate_video.setup()
 
 
 def handler(event):
@@ -35,7 +36,7 @@ def handler(event):
         s3_endpoint_url if s3_endpoint_url else "https://s3.amazonaws.com/"
     )
 
-    generated_video_local_path = generate_video(**_input)
+    generated_video_local_path = generate_video.predict(**_input)
 
     file_url = upload_file_to_bucket(
         file_name=f"{uuid.uuid4()}.mp4",

@@ -1,6 +1,10 @@
+import sys
 
 from types import SimpleNamespace
 from helpers.model_load import load_model, get_model_output_paths
+
+
+sys.path.insert(0, "src")
 
 
 def PathSetup():

@@ -3,6 +3,7 @@
 
 runpod==0.9.11
 
+cog==0.7.2
 clean-fid==0.1.35
 colab-convert==2.0.5
 einops==0.6.1

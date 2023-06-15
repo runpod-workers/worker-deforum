@@ -1,3 +1,15 @@
+from helpers.aesthetics import load_aesthetics_model
+from helpers.model_load import (
+    make_linear_decode,
+)
+from helpers.render import (
+    render_animation,
+    render_input_video,
+    render_image_batch,
+    render_interpolation,
+)
+from ldm.util import instantiate_from_config
+import clip
 import os
 import shutil
 import subprocess
@@ -12,20 +24,7 @@ from types import SimpleNamespace
 from cog import BasePredictor, Input, Path
 from omegaconf import OmegaConf
 
-sys.path.insert(0, "src")
-import clip
-
-from ldm.util import instantiate_from_config
-from helpers.render import (
-    render_animation,
-    render_input_video,
-    render_image_batch,
-    render_interpolation,
-)
-from helpers.model_load import (
-    make_linear_decode,
-)
-from helpers.aesthetics import load_aesthetics_model
+sys.path.insert(0, "deforum_src")
 
 
 MODEL_CACHE = "diffusion_models_cache"
@@ -125,7 +124,7 @@ class Predictor(BasePredictor):
         strength: float = Input(
             default=0.5,
             description="The initial diffusion on the input image."
-        ), 
+        ),
         use_mask: bool = Input(default=False),
         mask_file: Path = Input(
             default=None, description="Provide mask_file if use_mask"

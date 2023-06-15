@@ -7,7 +7,7 @@ sys.path.insert(0, "src")
 
 
 def PathSetup():
-    models_path = "models"  # @param {type:"string"}
+    models_path = "diffusion_models_cache"  # @param {type:"string"}
     configs_path = "configs"  # @param {type:"string"}
     output_path = "outputs"  # @param {type:"string"}
     mount_google_drive = True  # @param {type:"boolean"}

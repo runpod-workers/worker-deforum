@@ -36,5 +36,5 @@ numpngw==0.1.2
 open-clip-torch==2.20.0
 torchsde==0.2.5
 ninja==1.11.1
-triton==2.0.0.post1
-xformers==0.0.20
+triton
+xformers

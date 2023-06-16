@@ -247,6 +247,11 @@ INPUT_SCHEMA = {
         "required": False,
         "default": 1,
     },
+    "color_force_grayscale": {
+        "type": bool,
+        "required": False,
+        "default": False,
+    },
     "diffusion_cadence": {
         "type": str,
         "required": False,

@@ -14,6 +14,11 @@ INPUT_SCHEMA = {
         "required": False,
         "default": "0: a beautiful apple, trending on Artstation | 50: a beautiful banana, trending on Artstation | 100: a beautiful coconut, trending on Artstation | 150: a beautiful durian, trending on Artstation",
     },
+    "negative_prompts": {
+        "type": str,
+        "required": False,
+        "default": "0: mountain"
+    },
     "width": {
         "type": int,
         "required": False,

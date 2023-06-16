@@ -25,7 +25,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Install deforum-stable-diffusion
 RUN git clone https://github.com/justinmerrell/deforum-stable-diffusion.git && \
     cd deforum-stable-diffusion && \
-    git reset --hard 78b5761de8e15e3a3a71e487bd1b7a7b9969b78f
+    git reset --hard bfa83a0b7303185d01893c7d5d59805c85fcffe4
 
 WORKDIR /deforum-stable-diffusion
 

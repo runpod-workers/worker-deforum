@@ -34,8 +34,13 @@ ADD src .
 
 # Cache Models
 COPY builder/cache_models.py cache_models.py
+# We importing some packages from deforum repo for model downloading
+ENV PYTHONPATH="${PYTHONPATH}:/deforum-stable-diffusion/src"
 RUN python cache_models.py
 RUN rm cache_models.py
+
+# Create symlink (deforum has hardcoded paths for diffusion_models_cache for simplicity all models are stored in models folder)
+RUN ln -s /deforum-stable-diffusion/models /deforum-stable-diffusion/diffusion_models_cache
 
 # Cleanup section (Worker Template)
 RUN apt-get autoremove -y && \

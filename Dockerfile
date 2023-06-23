@@ -27,10 +27,6 @@ RUN git clone https://github.com/justinmerrell/deforum-stable-diffusion.git && \
     cd deforum-stable-diffusion && \
     git reset --hard 3358d9aea454302f895f9f37f2344515c76a0adf
 
-# We import some packages from deforum repo for model downloading
-ENV PYTHONPATH="${PYTHONPATH}:/deforum-stable-diffusion/src"
-
-
 # Add src files (Worker Template)
 ADD src /deforum-stable-diffusion
 

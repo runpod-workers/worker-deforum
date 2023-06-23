@@ -71,8 +71,6 @@ jobs:
           git clone https://github.com/justinmerrell/deforum-stable-diffusion.git
           cd deforum-stable-diffusion
           git reset --hard 3358d9aea454302f895f9f37f2344515c76a0adf
-        env:
-          PYTHONPATH: "${PYTHONPATH}:/deforum-stable-diffusion/src"
 
       - name: Copy files from src to deforum-stable-diffusion
         run: |

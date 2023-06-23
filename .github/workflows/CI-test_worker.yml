@@ -51,20 +51,21 @@ jobs:
         run: |
           apt-get update -y
           apt-get upgrade -y
-          apt-get install -y git ffmpeg libgl1-mesa-glx libglib2.0-0
+          apt-get install -y git ffmpeg libgl1-mesa-glx libglib2.0-0 rustc cargo
           apt-get autoremove -y
           apt-get clean -y
           rm -rf /var/lib/apt/lists/*
 
-      - name: Set up Python 3.11 & install dependencies
+      - name: Set up Python 3.10 & install dependencies
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
       - name: Install Python Dependencies
         run: |
-          python -m pip install --upgrade pip
+          python3.10 -m pip install --upgrade pip
           pip install -r builder/requirements.txt
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
       - name: Install deforum-stable-diffusion
         run: |
@@ -80,7 +81,7 @@ jobs:
 
       - name: Cache Models
         run: |
-          python builder/cache_models.py
+          python3.10 builder/cache_models.py
 
       - name: Create symlink
         run: |
@@ -88,7 +89,7 @@ jobs:
 
       - name: Execute Tests
         run: |
-          python /deforum-stable-diffusion/rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}'
+          python3.10 /deforum-stable-diffusion/rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}'
 
   terminate_worker:
     if: ${{ always() && !success() }}

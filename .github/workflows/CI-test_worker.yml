@@ -87,7 +87,7 @@ jobs:
 
       - name: Execute Tests
         run: |
-          cd deforum-stable-diffusion/ && python3.10 rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}'
+          cd deforum-stable-diffusion/ && python3.10 rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}}'
 
   terminate_worker:
     if: ${{ always() && !success() }}

@@ -77,7 +77,7 @@ jobs:
 
       - name: Copy files from src to deforum-stable-diffusion
         run: |
-          cp -r src/* /deforum-stable-diffusion/
+          cp -r src/* deforum-stable-diffusion/
 
       - name: Cache Models
         run: |
@@ -85,11 +85,11 @@ jobs:
 
       - name: Create symlink
         run: |
-          ln -s /deforum-stable-diffusion/models /deforum-stable-diffusion/diffusion_models_cache
+          ln -s deforum-stable-diffusion/models deforum-stable-diffusion/diffusion_models_cache
 
       - name: Execute Tests
         run: |
-          python3.10 /deforum-stable-diffusion/rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}'
+          python3.10 deforum-stable-diffusion/rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}'
 
   terminate_worker:
     if: ${{ always() && !success() }}

@@ -38,3 +38,4 @@ torchsde==0.2.5
 ninja==1.11.1
 triton
 xformers
+wget

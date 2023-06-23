@@ -65,7 +65,6 @@ jobs:
         run: |
           python3.10 -m pip install --upgrade pip
           pip install -r builder/requirements.txt
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
       - name: Install deforum-stable-diffusion
         run: |

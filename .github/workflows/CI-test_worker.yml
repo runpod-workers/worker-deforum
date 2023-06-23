@@ -80,7 +80,8 @@ jobs:
 
       - name: Cache Models
         run: |
-          python3.10 builder/cache_models.py
+          cpy builder/cache_models.py deforum-stable-diffusion/
+          cd deforum-stable-diffusion/ && python3.10 cache_models.py
 
       - name: Create symlink
         run: |

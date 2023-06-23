@@ -72,7 +72,7 @@ jobs:
           cd deforum-stable-diffusion
           git reset --hard 3358d9aea454302f895f9f37f2344515c76a0adf
         env:
-          PYTHONPATH: "${PYTHONPATH}:deforum-stable-diffusion/src"
+          PYTHONPATH: "${PYTHONPATH}:/deforum-stable-diffusion/src"
 
       - name: Copy files from src to deforum-stable-diffusion
         run: |
@@ -88,7 +88,7 @@ jobs:
 
       - name: Execute Tests
         run: |
-          python3.10 deforum-stable-diffusion/rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}'
+          cd deforum-stable-diffusion/ && python3.10 rp_handler.py --test_input='{"input": {"animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation", "max_frames": 10}'
 
   terminate_worker:
     if: ${{ always() && !success() }}

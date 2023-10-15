@@ -1,0 +1,14 @@
+[
+  {
+    "hardwareConfig": {
+      "endpointConfig": {
+        "gpuIds": "AMPERE_16",
+        "name": "16GB GPU"
+      }
+    },
+    "input": {
+      "animation_prompts": "0: a beautiful ball, trending on Artstation | 5: a beautiful monkey, trending on Artstation",
+      "max_frames": 10
+    }
+  }
+]
